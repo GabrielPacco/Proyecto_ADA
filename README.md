@@ -86,7 +86,7 @@ _Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios
 * **Miguel Angel Deza Cuela** - *Programador* - [Miguel-Deza](https://github.com/Miguel-Deza)
 * **Marko Marcelo Ituccayasi Umeres** - *Programador* - [Marko-Marcelo](https://github.com/MarkoMarcelo)
 * **Gabriel Pacco Huaraca** - *Programador* - [GabrielPacco](https://github.com/GabrielPacco)
-* **Gleddynuri Marbel Picha Chañi** - *Programador* - )
+* **Gleddynuri Marbel Picha Chañi** - *Programador* - [Gleddynuri-Marbel](https://github.com/Gleddynuri-Marbel)
 * **Erick Torres Quispe** - *Programador* - [ericktq](https://https://github.com/ericktq)
 
 También puedes mirar la lista de todos los [contribuyentes](https://github.com/your/project/contributors) quíenes han participado en este proyecto. 
