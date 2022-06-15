@@ -84,7 +84,8 @@ Usamos [SemVer](http://semver.org/) para el versionado. Para todas las versiones
 _Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios_
 
 * **Miguel Angel Deza Cuela** - *Programador* - [Miguel-Deza](https://github.com/Miguel-Deza)
-* **Gabriel Pacco Huaraca** - *Documentación* - [GabrielPacco](https://github.com/GabrielPacco)
+* **Marko Marcelo Ituccayasi Umeres** - *Programador* - [Marko-Marcelo](https://github.com/MarkoMarcelo)
+* **Fulanito Detal** - *Documentación* - [fulanitodetal](#fulanito-de-tal)
 
 También puedes mirar la lista de todos los [contribuyentes](https://github.com/your/project/contributors) quíenes han participado en este proyecto. 
 
