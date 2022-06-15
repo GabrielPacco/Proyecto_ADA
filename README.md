@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Proyecto_ADA
 
 ![](https://live.staticflickr.com/65535/52148898391_fc2244ada9_h.jpg)
