@@ -1,12 +1,7 @@
 <<<<<<< HEAD
 # Proyecto_ADA
-<p align="center">
-  <a href="https://docsify.js.org">
-    <img alt="docsify" src="./docs/_media/icon.svg">
-  </a>
-</p>
-# [![Proyecto_ADA](https://res.cloudinary.com/forestry-demo/image/upload/v1585234360/TinaCMS/TinaCMS.png 'Visit tinacms.org')](https://tina.io)
-_Acá va un párrafo que describa lo que es el proyecto_
+
+![](https://live.staticflickr.com/65535/52148898391_fc2244ada9_h.jpg)
 
 ## Comenzando 🚀
 
@@ -183,16 +178,6 @@ So that you can start straight away.
 npm run bootstrap && npm run dev
 ```
 
-
-## Backers
-
-Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com/docsify#backers)]
-
-<a href="https://opencollective.com/docsify#backers" target="_blank"><img src="https://opencollective.com/docsify/backers.svg?width=890"></a>
-
-## Sponsors
-
-Support this project by becoming a sponsor. Your logo will show up here with a link to your website. [[Become a sponsor](https://opencollective.com/docsify#silver-sponsors)]
 =======
 ![NumCpp logo](https://github.com/dpilger26/NumCpp/raw/master/docs/logo/NumCppLogo.png)
 
