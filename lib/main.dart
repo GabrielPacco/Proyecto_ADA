@@ -103,7 +103,9 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-     
+      floatingActionButton: FloatingActionButton(
+        onPressed: goToInsertCodeAccessPage,
+        child: const Icon(Icons.arrow_right_alt),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
