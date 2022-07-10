@@ -9,3 +9,5 @@
 
 using namespace std;
 using namespace cv;
+
+//Se usa OpenCV para diferentes funciones de procesamiento de señales y actúa como GUI
