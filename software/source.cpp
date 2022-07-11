@@ -23,6 +23,47 @@ Mat ReadImage(string imgName) {
 }
 // Se lee la imagen mediante imgName y sino no se puede leer
 
+// Función de detección de bordes Sobel
+Mat SobelDetect(Mat gray) {
+	int dx[3][3] = { {1, 0, -1},{2, 0, -2},{1, 0, -1 } };
+	int dy[3][3] = { {1, 2, 1},{0, 0, 0},{-1, -2, -1} };
+
+	Mat output = Mat(gray.rows, gray.cols, CV_8U);
+	Mat kernel = Mat(3, 3, CV_8U);
+
+	int max = -200, min = 2000;
+
+	for (int i = 1; i < gray.rows - 2; i++) {
+		for (int j = 1; j < gray.cols - 2; j++) {
+			// aplicar el núcleo en las direcciones X e Y
+			int sumX = 0;
+			int sumY = 0;
+			uchar ker;
+			for (int m = -1; m <= 1; m++) {
+				for (int n = -1; n <= 1; n++) {
+					// obtener el valor del píxel (i,j)
+					kernel.at<uchar>(m + 1, n + 1) = gray.at<uchar>(i + m, j + n);
+					sumX += kernel.at<uchar>(m + 1, n + 1) * dx[m + 1][n + 1];
+					sumY += kernel.at<uchar>(m + 1, n + 1) * dy[m + 1][n + 1];
+				}
+			}
+			int sum = abs(sumX) + abs(sumY);
+			//cout << sum << endl;
+			output.at<uchar>(i, j) = (sum > 255) ? 255 : sum;
+			//output2.at<uchar>(i, j) = kernel.at<uchar>(i, j);
+		}
+	}
+	return output;
+}
+
+	// Detección de bordes Sobel
+	sobel = Mat(src.rows, src.cols, CV_32F);
+	sobel = SobelDetect(gray);
+	namedWindow("Sobel Edge Detection", WINDOW_NORMAL);
+	imshow("Sobel Edge Detection", sobel);
+	waitKey(0);
+	destroyWindow("Sobel Edge Detection");
+
 
 // Funcion main
 int main() {
