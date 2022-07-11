@@ -12,7 +12,8 @@ using namespace cv;
 //Se usa OpenCV para diferentes funciones de procesamiento de señales y actúa como GUI
 
 
-Mat src;
+Mat src, gradiente;
+
 Mat ReadImage(string imgName) {
 	Mat img = imread(imgName, IMREAD_COLOR);
 	if (img.empty()) {
@@ -65,6 +66,17 @@ Mat SobelDetect(Mat gray) {
 	destroyWindow("Sobel Edge Detection");
 
 
+// Función para difuminar la imagen
+Mat Difuminar(Mat img) {
+	Mat output = Mat(img.rows, img.cols, CV_8U);
+	for (int i = 0; i < img.rows; i++) {
+		for (int j = 0; j < img.cols; j++) {
+			output.at<uchar>(i, j) = (uchar)(img.at<uchar>(i, j) * 0.5);
+		}
+	}
+	return output;
+}
+
 // Funcion main
 int main() {
 	String imgName;
@@ -78,4 +90,13 @@ int main() {
 	waitKey(0);
 	destroyWindow("Original Image");
 
+	// Se muestra la imagen difuminada
+	Mat difuminada = Difuminar(src);
+	namedWindow("Difuminada", WINDOW_NORMAL);
+	imshow("Difuminada", difuminada);
+	waitKey(0);
+	destroyWindow("Difuminada");
+	
 
+	return 0;
+}
