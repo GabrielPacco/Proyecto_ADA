@@ -71,11 +71,17 @@ Mat SobelDetect(Mat gray) {
 
 
 // Función para difuminar la imagen
-Mat Difuminar(Mat img) {
-	Mat output = Mat(img.rows, img.cols, CV_8U);
-	for (int i = 0; i < img.rows; i++) {
-		for (int j = 0; j < img.cols; j++) {
-			output.at<uchar>(i, j) = (uchar)(img.at<uchar>(i, j) * 0.5);
+Mat Difuminar(Mat gradiente) {
+	Mat output = Mat(gradiente.rows, gradiente.cols, CV_8U);
+	for (int i = 1; i < gradiente.rows - 2; i++) {
+		for (int j = 1; j < gradiente.cols - 2; j++) {
+			int sum = 0;
+			for (int m = -1; m <= 1; m++) {
+				for (int n = -1; n <= 1; n++) {
+					sum += gradiente.at<uchar>(i + m, j + n);
+				}
+			}
+			output.at<uchar>(i, j) = sum / 9;
 		}
 	}
 	return output;
@@ -95,7 +101,7 @@ int main() {
 	destroyWindow("Original Image");
 
 	// Se muestra la imagen difuminada
-	Mat difuminada = Difuminar(src);
+	Mat difuminada = Difuminar(gradiente);
 	namedWindow("Difuminada", WINDOW_NORMAL);
 	imshow("Difuminada", difuminada);
 	waitKey(0);
