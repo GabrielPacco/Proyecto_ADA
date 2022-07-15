@@ -73,15 +73,22 @@ Mat SobelDetect(Mat gray) {
 // Función para difuminar la imagen
 Mat Difuminar(Mat gradiente) {
 	Mat output = Mat(gradiente.rows, gradiente.cols, CV_8U);
-	for (int i = 1; i < gradiente.rows - 2; i++) {
-		for (int j = 1; j < gradiente.cols - 2; j++) {
-			int sum = 0;
-			for (int m = -1; m <= 1; m++) {
-				for (int n = -1; n <= 1; n++) {
-					sum += gradiente.at<uchar>(i + m, j + n);
+	int total = 0;
+	// Obtener el promedio de los valores de los píxeles de la imagen
+	for (int i = 0; i < gradiente.rows - 2; i++) {
+		for (int j = 0; j < gradiente.cols - 2; j++) {
+			int sum = 9;
+			total = 0; 			// Reiniciar el total
+			for (int m = -sum / 2; m <= sum / 2; m++) {
+				for (int n = -sum/ 2; n <= sum/ 2; n++) {
+					int tx = i + m;			// Obtener la posición del píxel en la imagen
+					int ty = j + n;		
+					if(tx > 0 && tx < gradiente.rows && ty > 0 && ty < gradiente.cols) {
+						total += gradiente.at<uchar>(tx, ty); // Sumar el valor del píxel
+					}
 				}
 			}
-			output.at<uchar>(i, j) = sum / 9;
+			output.at<uchar>(i, j) = total / sum / sum;
 		}
 	}
 	return output;
