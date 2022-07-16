@@ -27,7 +27,16 @@ Mat ReadImage(string imgName) {
 	return img;
 }
 // Se lee la imagen mediante imgName y sino no se puede leer
-
+//------------------------------------------------------
+Mat thresholding(Mat sobel, int method) {
+	Mat output = Mat(sobel.rows, sobel.cols, CV_8U);
+	if (method == THRESH_MOD) {
+		if (sobel.channels() != 1) {
+			cout << "The input image must be single-channeled!" << endl;
+			system("EXIT");
+		}
+	}
+}
 // Función de detección de bordes Sobel
 Mat SobelDetect(Mat gray) {
 	int dx[3][3] = { {1, 0, -1},{2, 0, -2},{1, 0, -1 } };
