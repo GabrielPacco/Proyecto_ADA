@@ -16,7 +16,7 @@ enum ThresholdMethods {
 };
 
 
-Mat src, gradiente,sobel;
+Mat src, gradiente,sobel,thresh;
 
 Mat ReadImage(string imgName) {
 	Mat img = imread(imgName, IMREAD_COLOR);
