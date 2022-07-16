@@ -16,7 +16,7 @@ enum ThresholdMethods {
 };
 
 
-Mat src, gradiente;
+Mat src, gradiente,sobel;
 
 Mat ReadImage(string imgName) {
 	Mat img = imread(imgName, IMREAD_COLOR);
@@ -113,6 +113,15 @@ int main() {
 	imshow("Difuminada", difuminada);
 	waitKey(0);
 	destroyWindow("Difuminada");
+	
+	// Se obtiene la gradiente
+	convertScaleAbs(sobel, gradient);
+	namedWindow("Gradiente", WINDOW_NORMAL);
+	imshow("Gradiente", gradient);
+	waitKey(0);
+	destroyWindow("Gradiente");
+	
+	
 	
 
 	return 0;
