@@ -36,7 +36,10 @@ Mat thresholding(Mat sobel, int method) {
 			system("EXIT");
 		}
 	}
+	return output;
 }
+
+
 // Función de detección de bordes Sobel
 Mat SobelDetect(Mat gray) {
 	int dx[3][3] = { {1, 0, -1},{2, 0, -2},{1, 0, -1 } };
