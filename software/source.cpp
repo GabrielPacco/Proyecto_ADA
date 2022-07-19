@@ -35,6 +35,26 @@ Mat thresholding(Mat sobel, int method) {
 			cout << "The input image must be single-channeled!" << endl;
 			system("EXIT");
 		}
+		
+	double minVal = 0, maxVal = 0;
+		for (int i = 0; i < sobel.rows; i++) {
+			for (int j = 0; j < sobel.cols; j++) {
+				//Mat kernel = Mat::zeros(9, 9, output.type());
+				// Implementar la lógica para llenar el núcleo de 9x9 con
+				// valores de la Mat gris, respetando los límites.
+
+				//Scalar avg_intensity = mean(kernel);
+				//minMaxLoc(kernel, &minVal, &maxVal);
+
+				if (sobel.at<uchar>(i, j) <= 255 && sobel.at<uchar>(i, j) > threshold_value) {
+					output.at<uchar>(i, j) = 255;
+				}
+				else {
+					output.at<uchar>(i, j) = 0;
+				}
+			}
+		}
+		
 	}
 	return output;
 }
