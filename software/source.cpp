@@ -59,6 +59,12 @@ Mat thresholding(Mat sobel, int method) {
 	return output;
 }
 
+void thresholding_call(int, void*) {
+	threshold_value = (int)threshold_value;
+	thresh = Mat(blurred.rows, blurred.cols, CV_8U);
+	thresh = thresholding(blurred, THRESH_MOD);
+	imshow("Thresholded Image", thresh);
+}
 
 // Función de detección de bordes Sobel
 Mat SobelDetect(Mat gray) {
