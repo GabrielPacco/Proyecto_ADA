@@ -4,7 +4,7 @@
 
 ### Procesamiento de Imágenes
 
-_Hay dos tipos de procesamiento de imágenes: analógico y digital. El procesamiento de imágenes analógico se aplica a las señales analógicas y sólo procesa señales bidimensionales. Las imágenes se manipulan mediante señales eléctricas y, en el procesamiento de imágenes analógicas, las señales analógicas pueden ser periódicas o no periódicas. Un ejemplo de imágenes analógicas son las imágenes de televisión fotografías, pinturas e imágenes médicas, etc. Por otro lado, el procesamiento de imágenes digitales se aplica a las imágenes digitales que están formadas por una matriz de pequeños píxeles y elementos. Hay una serie de programas y algoritmos que pueden aplicarse para manipular las imágenes para realizar cambios. Algunos ejemplos de imágenes digitales son el procesamiento del color, el reconocimiento reconocimiento de imágenes, procesamiento de vídeo, etc._
+_Hay dos tipos de procesamiento de imágenes: analógico y digital. El procesamiento de imágenes analógico se aplica a las señales analógicas y sólo procesa señales bidimensionales. Las imágenes se manipulan mediante señales eléctricas y, en el procesamiento de imágenes analógicas, las señales analógicas pueden ser periódicas o no periódicas. Un ejemplo de imágenes analógicas son las imágenes de televisión fotografías, pinturas e imágenes médicas, etc. Por otro lado, el procesamiento de imágenes digitales se aplica a las imágenes digitales que están formadas por una matriz de pequeños píxeles y elementos. Hay una serie de programas y algoritmos que pueden aplicarse para manipular las imágenes para realizar cambios. Algunos ejemplos de imágenes digitales son el procesamiento del color, el reconocimiento de imágenes, procesamiento de vídeo, etc._
 
 
 ### OpenCV
