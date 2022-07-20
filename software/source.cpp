@@ -16,7 +16,7 @@ enum ThresholdMethods {
 };
 
 
-Mat src, gradiente;
+Mat src, gradiente, trillar, cerrado;
 
 Mat ReadImage(string imgName) {
 	Mat img = imread(imgName, IMREAD_COLOR);
@@ -94,6 +94,30 @@ Mat Difuminar(Mat gradiente) {
 	return output;
 }
 
+// 
+Mat cerrarContornos(Mat trillar, int separar_pixel) {
+	Mat output(trillar.rows, trillar.cols, CV_8U); 
+	for (int i = 0; i < trillar.rows; i++) {
+		for (int j = 0; j < trillar.cols; j++) {
+			if (trillar.at<uchar>(i, j) == 255) {	
+				for (int a = 0; a < separar_pixel + 1; a++) {
+					if (trillar.at<uchar>(i, j + a) == 255) {
+						for (int b = 0; b < a; b++) {
+							trillar.at<uchar>(i, j + b) = 255;
+						}
+					}
+				}
+			}
+		}
+	} 
+	for (int i = 0; i < trillar.rows; i++) {
+		for (int j = 0; j < trillar.cols; j++) {
+			output.at<uchar>(i, j) = trillar.at<uchar>(i, j);
+		}
+	}
+	return output; 
+}
+
 // Funcion main
 int main() {
 	String imgName;
@@ -113,6 +137,12 @@ int main() {
 	imshow("Difuminada", difuminada);
 	waitKey(0);
 	destroyWindow("Difuminada");
+
+	cerrado = cerrarContornos(trillar, 100);
+	namedWindow("Imagen contorneada cerrada", WINDOW_NORMAL);
+	imshow("Imagen contorneada cerrada", cerrado);
+	waitKey(0);
+	destroyWindow("Imagen contorneada cerrada");
 	
 
 	return 0;
