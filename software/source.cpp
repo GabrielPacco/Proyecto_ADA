@@ -189,6 +189,12 @@ int main() {
 	destroyWindow("Gradiente");
 	
 	
+	// Se crea una barra de seguimiento
+	const char* trackbar_value = "Valor";
+	createTrackbar(trackbar_value, "Thresholded Image", &threshold_value, 254, thresholding_call);
+	thresholding_call(0, 0);
+	thresh = Mat(blurred.rows, blurred.cols, CV_8U);
+	
 	
 
 	return 0;
