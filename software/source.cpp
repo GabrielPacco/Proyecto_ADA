@@ -15,12 +15,7 @@ enum ThresholdMethods {
 	THRESH_MOD = 1
 };
 
-
-<<<<<<< HEAD
-Mat src, gradiente, trillar, cerrado;
-=======
-Mat src, gradiente,sobel,thresh;
->>>>>>> 5ac9021bef58f1aaa788630f593af0fe59e52027
+Mat src, gradiente,sobel,thresh,trillar,cerrado;
 
 Mat ReadImage(string imgName) {
 	Mat img = imread(imgName, IMREAD_COLOR);
