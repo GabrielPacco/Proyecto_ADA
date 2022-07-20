@@ -16,7 +16,11 @@ enum ThresholdMethods {
 };
 
 
+<<<<<<< HEAD
 Mat src, gradiente, trillar, cerrado;
+=======
+Mat src, gradiente,sobel,thresh;
+>>>>>>> 5ac9021bef58f1aaa788630f593af0fe59e52027
 
 Mat ReadImage(string imgName) {
 	Mat img = imread(imgName, IMREAD_COLOR);
@@ -27,6 +31,44 @@ Mat ReadImage(string imgName) {
 	return img;
 }
 // Se lee la imagen mediante imgName y sino no se puede leer
+//------------------------------------------------------
+Mat thresholding(Mat sobel, int method) {
+	Mat output = Mat(sobel.rows, sobel.cols, CV_8U);
+	if (method == THRESH_MOD) {
+		if (sobel.channels() != 1) {
+			cout << "The input image must be single-channeled!" << endl;
+			system("EXIT");
+		}
+		
+	double minVal = 0, maxVal = 0;
+		for (int i = 0; i < sobel.rows; i++) {
+			for (int j = 0; j < sobel.cols; j++) {
+				//Mat kernel = Mat::zeros(9, 9, output.type());
+				// Implementar la lógica para llenar el núcleo de 9x9 con
+				// valores de la Mat gris, respetando los límites.
+
+				//Scalar avg_intensity = mean(kernel);
+				//minMaxLoc(kernel, &minVal, &maxVal);
+
+				if (sobel.at<uchar>(i, j) <= 255 && sobel.at<uchar>(i, j) > threshold_value) {
+					output.at<uchar>(i, j) = 255;
+				}
+				else {
+					output.at<uchar>(i, j) = 0;
+				}
+			}
+		}
+		
+	}
+	return output;
+}
+
+void thresholding_call(int, void*) {
+	threshold_value = (int)threshold_value;
+	thresh = Mat(blurred.rows, blurred.cols, CV_8U);
+	thresh = thresholding(blurred, THRESH_MOD);
+	imshow("Thresholded Image", thresh);
+}
 
 // Función de detección de bordes Sobel
 Mat SobelDetect(Mat gray) {
@@ -94,7 +136,7 @@ Mat Difuminar(Mat gradiente) {
 	return output;
 }
 
-// 
+// Función Marco Rectangular
 Mat cerrarContornos(Mat trillar, int separar_pixel) {
 	Mat output(trillar.rows, trillar.cols, CV_8U); 
 	for (int i = 0; i < trillar.rows; i++) {
@@ -143,6 +185,15 @@ int main() {
 	imshow("Imagen contorneada cerrada", cerrado);
 	waitKey(0);
 	destroyWindow("Imagen contorneada cerrada");
+	
+	// Se obtiene la gradiente
+	convertScaleAbs(sobel, gradient);
+	namedWindow("Gradiente", WINDOW_NORMAL);
+	imshow("Gradiente", gradient);
+	waitKey(0);
+	destroyWindow("Gradiente");
+	
+	
 	
 
 	return 0;
