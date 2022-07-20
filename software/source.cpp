@@ -11,11 +11,16 @@ using namespace std;
 using namespace cv;
 //Se usa OpenCV para diferentes funciones de procesamiento de señales y actúa como GUI
 
+enum escalaGrisesMethods{
+	Gray_AVG=1,
+	GRAY_WEIGHT=2
+};
+
 enum ThresholdMethods {
 	THRESH_MOD = 1
 };
 
-Mat src, gradiente,sobel,thresh,trillar,cerrado;
+Mat src,gray, gradiente,sobel,thresh,trillar,cerrado;
 
 Mat ReadImage(string imgName) {
 	Mat img = imread(imgName, IMREAD_COLOR);
@@ -27,6 +32,42 @@ Mat ReadImage(string imgName) {
 }
 // Se lee la imagen mediante imgName y sino no se puede leer
 //------------------------------------------------------
+
+Mat escalaGrises(Mat src, int method){
+	Mat output(scr.rows,src.cols,CV_8UC1);
+	if(method==GRAY_AVG)
+	{
+		int i,j;
+		for(i=0;i<src.rows;i++)
+		{
+			for(j=0;j<src.cols;j++)
+			{
+				int Blue = src.at<Vec3b>(i, j)[0]; 
+				int Green = src.at<Vec3b>(i, j)[1]; 
+				int Red = src.at<Vec3b>(i, j)[2]; 
+				int escalaGrises = (Blue + Green + Red) / 3;
+				output.at<uchar>(i, j) = escalaGrises;
+			}
+		}
+	}
+	else if (method==GRAY_WEIGHT){
+		for(int i=0;i<scr.rows;i++)
+		{
+			for(int j=0;j<src.cols;j++)
+			{
+				int Blue = src.at<Vec3b>(i, j)[0]; 
+				int Green = src.at<Vec3b>(i, j)[1];
+				int Red = src.at<Vec3b>(i, j)[2]; 
+				int escalaGrises = (0.3 * Red) + (0.59 * Green) + (0.11 * Blue);
+				output.at<uchar>(i, j) = escalaGrises;
+			}
+		}
+	}
+	return output;
+}
+
+
+
 Mat thresholding(Mat sobel, int method) {
 	Mat output = Mat(sobel.rows, sobel.cols, CV_8U);
 	if (method == THRESH_MOD) {
