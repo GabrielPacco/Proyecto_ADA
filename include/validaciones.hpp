@@ -1,4 +1,5 @@
-#pragma once
+#ifndef VALIDACIONES_HPP
+#define VALIDACIONES_HPP
 
 #include <iostream>
 #include <string>
@@ -13,3 +14,5 @@ struct opcion{
     void (*funcion)(){};
 };
 typedef struct opcion Opcion;
+
+#endif // VALIDACIONES_HPP
