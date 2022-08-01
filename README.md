@@ -10,7 +10,7 @@
 Se ha creado un sistema de boletería simplificado para una aerolínea llamada UNSA TRAVEL que ayudara a los estudiantes universitarios de nuestra universidad a movilizarse e impulsar sus viajes durante su proceso academico el cual tiene nexos con 60 ciudades alrededor del mundo, las cuales se pueden visualizar en este mapa: 
 El sistema posee las siguientes funcionalidades:
 
-- Calcula la mejor ruta desde Peru, Lima hacia la ciudad que el pasajero desee viajar. Las rutas se calculan en base a los vuelos específicos que la aerolinea ofrece. Así mismo, se calcula la mejor ruta de regreso.
+- Calcula la mejor ruta desde Perú, Lima hacia la ciudad que el pasajero desee viajar. Las rutas se calculan en base a los vuelos específicos que la aerolinea ofrece. Así mismo, se calcula la mejor ruta de regreso.
 
 - En caso que la aerolínea no ofrezca vuelos directos hacia esa localización, se toman en cuentas todas las escalas necesarias para llegar al destino. Al cliente se le carga monetariamente el costo total de cada boleto, incluyendo todas las escalas de sus viajes de ida y vuelta.
 
@@ -31,7 +31,7 @@ Se creó [este grafo](http://graphonline.ru/en/?graph=NPvTxAfWDBTwNwpb) ponderad
 
 #### Arreglos Dinámicos
 
-Se crean arreglos dinamicos usando la libreria `<vector>` para almacenar diferentes tipos de datos como por ejemplo para guardar los clientesy verificar si tienen alguna discapacidad o no, para registrar las maletas de los clientes y para iniciar el abordaje de los pasajeros. 
+Se crean arreglos dinamicos usando la libreria "<vector>" para almacenar diferentes tipos de datos como por ejemplo para guardar los clientesy verificar si tienen alguna discapacidad o no, para registrar las maletas de los clientes y para iniciar el abordaje de los pasajeros. 
 
 #### Pilas 
 
