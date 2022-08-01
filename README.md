@@ -104,6 +104,9 @@ _En este proyecto todos los integrantes han panticipado activamente:_
 * **Gleddynuri Marbel Picha Chañi** - *Programador* - [Gleddynuri-Marbel](https://github.com/Gleddynuri-Marbel)
 * **Erick Torres Quispe** - *Programador* - [ericktq](https://github.com/ericktq)
 
+![image](https://user-images.githubusercontent.com/78099176/182055449-775ba12b-68ab-4f00-8b3c-ca2281404fbf.png)
+
+
 
 ## Licencia 📄
 Este proyecto está bajo la Licencia BSD 3-Clause License - mira el archivo [LICENSE.md](LICENSE.md) para detalles
