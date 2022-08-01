@@ -4,13 +4,8 @@
 #include <string>
 #include <algorithm>
 #include "rutas.hpp"
-#include "maletas.hpp"
-#include "abordaje.hpp"
-#include "validaciones.hpp"
-#include "logo.hpp"
+
 using namespace std;
-
-
 
 bool compNombres(string a, string b) { return a < b; };
 
