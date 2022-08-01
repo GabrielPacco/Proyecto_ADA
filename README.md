@@ -1,6 +1,7 @@
 # PROYECTO FINAL - ANALISIS Y DISEÑO DE ALGORITMOS - UNSA TRAVEL
 
-![](https://live.staticflickr.com/65535/52148898391_fc2244ada9_h.jpg)
+![image](https://user-images.githubusercontent.com/78099176/182054996-f4ea91e8-59e3-4cd6-b154-839c4ac45ee5.png)
+
 
 ## Descripción del Proyecto
 
