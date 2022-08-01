@@ -109,7 +109,7 @@ _En este proyecto todos los integrantes han panticipado activamente:_
 
 
 ## Licencia 📄
-Este proyecto está bajo la Licencia BSD 3-Clause License - mira el archivo [LICENSE.md](LICENSE.md) para detalles
+Este proyecto está bajo la Licencia BSD 3-Clause License - mira el archivo LICENSE.md para detalles
 ## Expresiones de Gratitud 🎁
 
 * Agradecemos a todos nuestros profesores universitarios por inculcarnos todos sus conocimientos 📢
