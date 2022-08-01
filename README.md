@@ -62,7 +62,7 @@ Mínimo:
 
 ### Instalación 🔧
 
-1. Realiza una clonacion del repositorio en el sito local de tu preferencia con
+1. Realiza uan clonación del repositorio en el sitio local de su preferencia con
     ```
     git clone
     ```
@@ -70,9 +70,9 @@ Mínimo:
      ```
     code Proyecto_ADA
     ```
-3. Realiza la instalacion de la extension Code Runner.
-4. Ubica el archivo main.cpp.
-5. Realiza la ejecucion del proyecto con.
+3. Realiza la instalación de la extensión Code Runner.
+4. Ubica el archivo "main.cpp".
+5. Realiza la ejecución del proyecto con
     ```
     ctrol + alt + b
     ```
