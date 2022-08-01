@@ -31,7 +31,7 @@ Se creó [este grafo](http://graphonline.ru/en/?graph=NPvTxAfWDBTwNwpb) ponderad
 
 #### Arreglos Dinámicos
 
-Se crean arreglos dinamicos usando la libreria "<vector>" para almacenar diferentes tipos de datos como por ejemplo para guardar los clientesy verificar si tienen alguna discapacidad o no, para registrar las maletas de los clientes y para iniciar el abordaje de los pasajeros. 
+Se crean arreglos dinamicos usando la libreria `<vector>` para almacenar diferentes tipos de datos como por ejemplo para guardar los clientesy verificar si tienen alguna discapacidad o no, para registrar las maletas de los clientes y para iniciar el abordaje de los pasajeros. 
 
 #### Pilas 
 
