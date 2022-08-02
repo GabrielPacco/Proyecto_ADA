@@ -54,3 +54,36 @@ int MenuMaletas()
     } while (seguir);
     return 0;
 }
+
+void agregaMaletas ()
+{
+  int cantidad;
+  maleta mal;
+  do{
+    cout << endl;
+    cout << "Cuantas maletas desea registar? : ";
+    cin >> cantidad;
+
+  } while(cantidad < 1);
+
+  mal.cantidad = cantidad;
+  mal.peso[cantidad];
+      for (size_t i = 0; i < cantidad; i++){
+          float pes;
+        do{
+          cout << endl;
+          cout << "Ingrese el peso de la maleta #"<<(i+1) <<" en libras : ";
+          cin >> pes;
+
+          if(pes < 0.1){
+              cout << "Ingrese un valor válido\n\n" << endl;
+          }else{
+              mal.peso.push_back(pes);
+          }
+        } while(pes < 0.1);
+      }
+  maletaPila.push(mal);
+  cout << endl;
+  cout << "Registro agregado con exito! \n\n";
+  cout << endl;
+}
