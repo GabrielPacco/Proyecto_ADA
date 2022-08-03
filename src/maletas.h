@@ -87,3 +87,26 @@ void agregaMaletas ()
   cout << "Registro agregado con exito! \n\n";
   cout << endl;
 }
+
+void mostraPila(stack<maleta> Pila){
+    if(Pila.size()<1){
+        cout<< "Cola Vacia\n\n";
+    }else{
+        stack<maleta> Pila2;
+        int canti = Pila.size(); 
+        for(int i = 0; i < canti; i++){
+           Pila2.push(Pila.top());
+           Pila.pop();
+       }
+       for(int i = 0; i < canti; i++){
+           cout << "Cliente #"<< (i+1)<< ":\n Cantidad de maletas: " << (Pila2.top()).cantidad << endl;
+           for (size_t i = 0; i < (Pila2.top()).cantidad; i++)
+           {
+               cout << "       Maleta #" << (i+1) << ": " << (Pila2.top()).peso[i] <<" libras"<< "\n";
+           }
+           cout << "\n";
+           Pila2.pop();
+       }
+    }
+    cout << "\n\n";
+}
