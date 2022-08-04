@@ -74,7 +74,7 @@ Mínimo:
 4. Ubica el archivo "main.cpp".
 5. Realiza la ejecución del proyecto con
     ```
-    ctrol + alt + b
+    ctrol + shift + b
     ```
 
 ## Ejecutando las pruebas ⚙️

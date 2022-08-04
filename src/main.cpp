@@ -4,10 +4,11 @@
 #include <string>
 #include <algorithm>
 #include "rutas.hpp"
-#include "maletas.hpp"
-#include "abordaje.hpp"
 #include "validaciones.hpp"
 #include "logo.hpp"
+//#include "maletas.hpp"
+//#include "abordaje.hpp"
+
 using namespace std;
 
 
