@@ -28,7 +28,7 @@ void menu (list <cliente>,list <cliente>);
 void Elegir_destino(list <cliente>, list <cliente>);
 void Menu_abordaje (vector <cliente>,vector <cliente>);
 void Abordar_pasajeros();
-void Abordaje_destino(destino, list <cliente>, list <cliente>);
+void Abordaje_destino(destino, vector <cliente>, vector <cliente>);
 
 void menu(list <cliente> pasajeros, list <cliente> pasajerosDiscapacitados){
     bool s=true;
