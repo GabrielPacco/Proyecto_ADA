@@ -101,4 +101,31 @@ void Abordar_pasajeros(){
         }
     }
 }
-
+//Funcion secundaria
+void Abordaje_destino(destino v, list <cliente> pasajeros , list <cliente> pasajerosDiscapacitados){
+    string d;
+    switch (v){
+        case EEUU: d = "EEUU"; break;
+        case Canada: d = "Canada"; break;
+        case Colombia: d = "Colombia"; break;
+    }
+    if (!prioritario.empty() || !normal.empty()){ //Condicion para que no se pueda tener dos destinos en una misma cola
+        cout<<"\nLa cola de abordaje esta llena.\nIngresa a los pasajeros a su vuelo antes de elegir un nuevo destino\n\n";
+    }
+    
+    else{ //Si hay clientes en el registro procedemos a pasarlos a la cola de abordaje
+        if (!pasajeros.empty()){ //evaluamos primero los pasajeros no prioritarios
+            for (list<cliente>::iterator i = pasajeros.begin(); i != pasajeros.end(); ) //creamos un iterador para recorrer la lista 
+            {                                                                           
+                if (i->destino == d){ //este se detendra al encontrar un elemento con la condicion establecida
+                    normal.push(*i); //añadira el elemento a nuestra cola
+                    i =  pasajeros.erase(i); //se elimina el nodo               
+                }
+                else
+                    i++;
+            }
+        } 
+        //mostramos un mensaje si todo es correcto
+        cout<<"\nEl destino "<<d<<" se eligio correctamente\n";
+    }
+}
