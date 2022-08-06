@@ -73,11 +73,11 @@ void Elegir_destino(list <cliente> pasajeros , list <cliente> pasajerosDiscapaci
 }
 
 void Abordar_pasajeros(){
-    if (normal.empty() || prioritario.empty()){ //las colas no deben estar vacias
+    if (normal.empty() && prioritario.empty()){ //las colas no deben estar vacias
     cout<<"\nNo hay pasajeros para este destino\n\n";
     }
     //Se muestra la cola de pasajeros con prioridad
-    if (!prioritario.empty()){
+    else if (!prioritario.empty() && !normal.empty()){
         cout<<"========== Pasajeros prioritarios =========="<<endl<<endl;
         while (!prioritario.empty()){
             cliente siguiente_abordar = prioritario.front();
