@@ -19,7 +19,24 @@ struct destino{
     string continente;
 };
 
-extern destino ciudades[60][3]{
+struct par{
+    int origen;
+    int destino;
+    int peso;
+};
+
+struct ruta{
+    queue<par> pares;
+    float peso{};
+};
+
+struct Data
+{
+    int fin;
+    int peso;
+};
+
+destino ciudades[60][3]{
         {"San Salvador", "El Salvador", "América"},
         {"Los Angeles", "Estados Unidos", "América"},
         {"Washington", "Estados Unidos", "América"},
@@ -83,6 +100,8 @@ extern destino ciudades[60][3]{
 
 };
 
+int couter = 0;
+int V = 0; //Numero de vertices
+list<Data>* adj; //Puntero al arreglo de la lista de adyacencia
 
-//Prototipo de funciones
-int comenzarBusqueda(int s, int d);
+
