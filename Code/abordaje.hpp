@@ -3,6 +3,7 @@
 #include <iostream>
 #include <list>
 #include <queue>
+#include <vector>
 
 using namespace std;
 
@@ -25,6 +26,7 @@ queue <cliente> prioritario;
 
 void menu (list <cliente>,list <cliente>);
 void Elegir_destino(list <cliente>, list <cliente>);
+void Menu_abordaje (vector <cliente>,vector <cliente>);
 void Abordar_pasajeros();
 void Abordaje_destino(destino, list <cliente>, list <cliente>);
 
