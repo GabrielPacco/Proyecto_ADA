@@ -12,3 +12,5 @@ struct Nodo{
     int fin;
     int peso;
 };
+//Prototipo de funciones
+int comenzarBusqueda(int s, int d);
