@@ -104,14 +104,14 @@ void Abordar_pasajeros(){
     }
 }
 //Funcion secundaria
-void Abordaje_destino(destino v, list <cliente> pasajeros , list <cliente> pasajerosDiscapacitados){
+void Abordaje_destino(destino v, vector <cliente> pasajeros , vector <cliente> pasajerosDiscapacitados){
     string d;
     switch (v){
         case EEUU: d = "EEUU"; break;
         case Canada: d = "Canada"; break;
         case Colombia: d = "Colombia"; break;
     }
-    if (!prioritario.empty() || !normal.empty()){ //Condicion para que no se pueda tener dos destinos en una misma cola
+    if (!prioritario.empty() && !normal.empty()){ //Condicion para que no se pueda tener dos destinos en una misma cola
         cout<<"\nLa cola de abordaje esta llena.\nIngresa a los pasajeros a su vuelo antes de elegir un nuevo destino\n\n";
     }
     
