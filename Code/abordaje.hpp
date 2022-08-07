@@ -23,12 +23,12 @@ enum destino{EEUU, Canada, Colombia};
 queue <cliente> normal;
 queue <cliente> prioritario;
 
-void menu (list <cliente>,list <cliente>);
+void Menu_abordaje(list <cliente>,list <cliente>);
 void Elegir_destino(list <cliente>, list <cliente>);
 void Abordar_pasajeros();
 void Abordaje_destino(destino, list <cliente>, list <cliente>);
 
-void menu(list <cliente> pasajeros, list <cliente> pasajerosDiscapacitados){
+void Menu_abordaje(list <cliente> pasajeros, list <cliente> pasajerosDiscapacitados){
     bool s=true;
     int opcion;
     //Menu de opciones principales
