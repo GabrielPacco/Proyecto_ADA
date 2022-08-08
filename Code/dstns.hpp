@@ -222,4 +222,31 @@ int couter = 0;
 int V = 0; //Numero de vertices
 list<Data>* adj; //Puntero al arreglo de la lista de adyacencia
 
+void imprimirMejorRuta(){
+    float menor = rutas.front().peso;
+    queue<ruta> temp;
+
+    while(!rutas.empty()){
+        if(rutas.front().peso < menor){
+            menor = rutas.front().peso;
+        }
+        temp.push(rutas.front());
+        rutas.pop();
+    }
+
+    while(!temp.empty()){
+        if(temp.front().peso == menor){
+            while(!temp.front().pares.empty()){
+                cout  << "[" << temp.front().pares.front().peso << "]  "
+                      << ciudades[temp.front().pares.front().origen]->ciudad << " (" << ciudades[temp.front().pares.front().origen]->pais << ") -> "
+                      << ciudades[temp.front().pares.front().destino]->ciudad << " (" << ciudades[temp.front().pares.front().destino]->pais << ") "
+                      <<  endl;
+                temp.front().pares.pop();
+            }
+            cout << "Peso total del viaje: " << temp.front().peso << endl << endl;
+        }
+        temp.pop();
+    }
+}
+
 
