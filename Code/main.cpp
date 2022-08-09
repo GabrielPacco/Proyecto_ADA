@@ -3,6 +3,7 @@
 #include <set>
 #include <string>
 #include <algorithm>
+#include "dstns.hpp"
 /*
 #include "rutas.hpp"
 #include "validaciones.hpp"
@@ -30,6 +31,8 @@ vector<cliente> pasajerosDiscapacitados;
 
 int main()
 {
+    comenzarBusqueda(0,10);
+    
     bool stop=true;
     int opt;
     cout<<"Bienvenido"<<endl;
