@@ -4,13 +4,11 @@
 #include <string>
 #include <algorithm>
 #include "dstns.hpp"
-/*
-#include "rutas.hpp"
 #include "validaciones.hpp"
 #include "logo.hpp"
-//#include "maletas.hpp"
-//#include "abordaje.hpp"
-*/
+#include "maletas.hpp"
+#include "abordaje.hpp"
+
 using namespace std;
 
 struct cliente
@@ -130,7 +128,7 @@ void clientes()
         }
 
         cout<<"Redirigiendo al sistema de registro de maletas..."<<endl;
-        //ernesto's code.
+        MenuMaletas();
         cin.ignore();
 
         if (unPasajero.discapacidad=='s' || unPasajero.edad>65) //validacion de lista de pertenencia
@@ -156,7 +154,22 @@ void despliegueDestinos(){
 }
 
 void ganancias(){
-    cout<<"ganancias."<<endl;
+
+    float ganancia1=0, ganancia2=0, gananciaTotal=0;
+
+    for (int i = 0; i < listaPasajeros.size(); i++)
+    {
+        ganancia1+=(listaPasajeros[i].rutaVuelo.peso)*2.03;
+    }
+
+    for (int i = 0; i < pasajerosDiscapacitados.size(); i++)
+    {
+        ganancia2+=(pasajerosDiscapacitados[i].rutaVuelo.peso)*2.03;
+    }
+
+    gananciaTotal+=ganancia1+ganancia2;
+
+    cout<<"ganancias: "<<gananciaTotal<<endl;
 }
 
 void verNums(int opt)
