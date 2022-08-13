@@ -91,7 +91,7 @@ void clientes()
     int cont=0;
 
     cout<<"Bienvenido. "<<endl;
-    cout<<"Numero de pasajero a ingresar: ";
+    cout<<"Numero de pasajeros a ingresar: ";
     cin>>num;
     cin.ignore();
 
@@ -123,6 +123,9 @@ void clientes()
         cout<<"Destinos posibles: "<<endl;
         
         rutaCliente = comenzarBusqueda(0, despliegueDestinos());
+        unPasajero.rutaVuelo=rutaCliente;
+        unPasajero.costoTotal = costoTotalFinal;
+        
         cout << "Primer destino: " << ciudades[rutaCliente.pares.front().destino].ciudad << endl;
         bool opt3=true;
         while(opt3) //validacion de dato
@@ -224,17 +227,17 @@ void ganancias(){
 
     for (int i = 0; i < listaPasajeros.size(); i++)
     {
-        ganancia1+=(listaPasajeros[i].rutaVuelo.peso)*2.03;
+        ganancia1+=(listaPasajeros[i].costoTotal);
     }
 
     for (int i = 0; i < pasajerosDiscapacitados.size(); i++)
     {
-        ganancia2+=(pasajerosDiscapacitados[i].rutaVuelo.peso)*2.03;
+        ganancia2+=(pasajerosDiscapacitados[i].costoTotal);
     }
 
     gananciaTotal+=ganancia1+ganancia2;
 
-    cout<<"ganancias: "<<gananciaTotal<<endl;
+    cout<<"\nGanancias por boletos: $"<<gananciaTotal<<endl<<endl;
 }
 
 void verNums(int opt)
