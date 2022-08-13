@@ -2,11 +2,8 @@
 #pragma once
 #include <iostream>
 #include <vector>
-#include <queue>
-#include <string>
 #include "dstns.hpp"
 #include "validaciones.hpp"
-#include <clocale>
 
 using namespace std;
 
@@ -69,7 +66,7 @@ void Elegir_destino(vector <cliente> pasajeros , vector <cliente> pasajerosDisca
     bool s=true;
     int pais;
     do{ //desplegamos otro menu para que el usuario escoja el destino del vuelo
-        cout<<endl<<"++++++++++ CODIGOS DE PAISES +++++++++"<<endl;
+        cout<<endl<<"---------- CODIGOS DE PAISES +++++++++"<<endl;
         cout<<"1.EEUU\n"<<"2.Canada\n"<<"3.Colombia\n"<<"4.Salir\n";
         cout<<endl<<"Ingrese el destino del vuelo:"<<endl;
         cin>>pais;cin.ignore();
@@ -174,7 +171,7 @@ void Crear_puerta(vector <cliente> pasajeros , vector <cliente> pasajerosDiscapa
 
         unapuerta.destino = ciudades[pasajeros.front().rutaVuelo.pares.front().destino].ciudad; //asignando el destino del primer nodo
         
-        cout<<endl<<"++++++++++ PUERTAS DE ABORDAJE +++++++++"<<endl;
+        cout<<endl<<"---------- PUERTAS DE ABORDAJE ----------"<<endl;
         //Se imprime la primera puerta
         cout<<"Puerta "<<n++<<" con destino a "<<unapuerta.destino<<endl;
         puertas.push_back(unapuerta);

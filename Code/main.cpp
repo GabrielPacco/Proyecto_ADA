@@ -3,7 +3,6 @@
 #include <set>
 #include <string>
 #include <algorithm>
-#include <clocale>
 #include "dstns.hpp"
 #include "validaciones.hpp"
 #include "logo.hpp"
@@ -11,14 +10,6 @@
 #include "abordaje.hpp"
 
 using namespace std;
-
-struct cliente
-{
-    string nombre;
-    int edad;
-    char discapacidad;
-    int destino;
-};
 
 bool compNombres(string a, string b) {return a < b;};
 void clientes();
@@ -28,6 +19,8 @@ void verNums(int);
 
 vector <cliente> listaPasajeros;
 vector<cliente> pasajerosDiscapacitados;
+set<string> destinos;
+
 
 string continentes[5] = {
     "America", "Africa", "Asia", "Europa", "Oceania" 
@@ -63,7 +56,7 @@ int main()
                 ganancias();
             break;
             case 3:
-                //samuel's code.
+                Crear_puerta(listaPasajeros, pasajerosDiscapacitados);
             break;
             case 4:
                 stop=false;
@@ -82,52 +75,77 @@ int main()
 
 void clientes()
 {
-
     cliente unPasajero; //declaracion de objeto para acceder a la estructura.
 
-
     //inicio de recoleccion de datos.
+    bool error = true;
+
     int num=0;
     int cont=0;
 
     cout<<"Bienvenido. "<<endl;
-    cout<<"Numero de pasajeros a ingresar: ";
-    cin>>num;
+//cout<<"Numero de pasajeros a ingresar: ";
+//cin>>num;
     cin.ignore();
 
-    while (cont<num)
+    string auxString = " ";
+    
+    cout<<"-Ingrese el nombre del pasajero: ";       
+    unPasajero.nombre = validarString();
+//while (cont<num)
+
+    do
     {
-        cout<<"Ingrese el nombre del pasajero "<<cont+1<<": "<<endl;
-        getline(cin, unPasajero.nombre);
+        /*cout<<"Ingrese el nombre del pasajero "<<cont+1<<": "<<endl;
+        getline(cin, unPasajero.nombre);*/
         cout<<"Ingrese la edad del pasajero "<<cont+1<<": "<<endl;
         cin>>unPasajero.edad;
-        cout<<"¿Tiene alguna discapacidad? ";
-        bool opt2=true;
 
-        while(opt2) //validacion de dato
-        {
+        if (cin.fail() || unPasajero.edad < 1){
+            cin.clear();
+            cin.ignore();
+            cout << endl;
+            cout << "Por favor ingresa un numero entero positivo, intentalo otra vez." << endl;
+            cout << "----------------------------------------------------------------" << endl;
+            cout << endl;
+        } 
+
+         else {
+            error = false;
+        }
+    } while (error);
+
+    cout<<"¿Tiene alguna discapacidad? ";
+    bool opt2=true;
+
+    while(opt2) //validacion de dato
+    {
             cout<<"(s/n): ";
             cin>>unPasajero.discapacidad;
 
             if (unPasajero.discapacidad!='n' && unPasajero.discapacidad!='s')
             {
-                cout<<"Opcion invalida. Intentelo de nuevo"<<endl;
+                cout<<"Opcion invalida, intentelo de nuevo"<<endl;
             }
             else 
             {
                 opt2=false;
             } 
 
-        }
+    }
 
-        cout<<"Destinos posibles: "<<endl;
+    cout<<"Destinos posibles: "<<endl;
+    //Retorna la ruta con todos sus datos
+    rutaCliente = comenzarBusqueda(0, despliegueDestinos());
+    unPasajero.rutaVuelo=rutaCliente;
+    unPasajero.costoTotal = costoTotalFinal;
+
+    string destinoData = ciudades[unPasajero.rutaVuelo.pares.front().destino].ciudad;
+    cout << endl << "Costo total por ida y vuelta: $" << unPasajero.costoTotal << endl << endl;
+    destinos.insert(destinoData);
         
-        rutaCliente = comenzarBusqueda(0, despliegueDestinos());
-        unPasajero.rutaVuelo=rutaCliente;
-        unPasajero.costoTotal = costoTotalFinal;
-        
-        cout << "Primer destino: " << ciudades[rutaCliente.pares.front().destino].ciudad << endl;
-        bool opt3=true;
+        //cout << "Primer destino: " << ciudades[rutaCliente.pares.front().destino].ciudad << endl;
+        /*bool opt3=true;
         while(opt3) //validacion de dato
         {
             cout<<"Elija su opcion: ";
@@ -137,7 +155,7 @@ void clientes()
                 cout<<"Opcion no valida. Intentelo de nuevo. "<<endl;
                 opt3=true;
             }else opt3=false;   
-        }
+        }*/
 
         cout<<"Redirigiendo al sistema de registro de maletas..."<<endl;
         MenuMaletas();
@@ -147,10 +165,8 @@ void clientes()
         {
             pasajerosDiscapacitados.push_back(unPasajero); //cola pasajeros discapacitados y adultos mayores
         } else listaPasajeros.push_back(unPasajero); //cola pasajeros 
-        cont++;
-
     }
-}
+
 
 int despliegueDestinos(){
     int opt = 0;
@@ -164,11 +180,12 @@ int despliegueDestinos(){
     opt = validarRango(to_string(opt), 1, 5);
     string continente = continentes[opt-1];
     cout << endl << "Paises disponibles en " << continente << ": " << endl << endl;
-
+    //paises de continentes disponibles
     for(int i = 1; i < 60; i++){
         if(ciudades[i].continente == continente)paises.push_back(ciudades[i].pais);
     }
     
+    //eliminacion de copias
     sort(paises.begin(), paises.end(), compNombres);
     paises.erase(unique(paises.begin(), paises.end()), paises.end());
 
@@ -176,18 +193,20 @@ int despliegueDestinos(){
         counter++;
         cout << counter << "] " << *it << endl;
     }
+
     cout << endl;
     cout << "Ingrese el numero del pais al que desea visitar: ";
     optPais = validarRango(to_string(optPais), 1, paises.size());
     cout << endl;
 
+    //almacena pais
     counter = 0;
-    
     for(vector<string>::iterator it=paises.begin(); it!=paises.end(); it++){
         counter++;
         if(counter == optPais) pais = *it;
     }
 
+    //lista de ciudades
     counter = 0;
     for(int i = 1; i < 60; i++){
         if(ciudades[i].pais == pais) ciudadesDisponibles.push_back(ciudades[i].ciudad);
@@ -196,6 +215,7 @@ int despliegueDestinos(){
     sort(ciudadesDisponibles.begin(), ciudadesDisponibles.end(), compNombres);
     ciudadesDisponibles.erase(unique(ciudadesDisponibles.begin(), ciudadesDisponibles.end()), ciudadesDisponibles.end());
 
+    //listar en pantalla
     counter = 0;
     for(vector<string>::iterator it=ciudadesDisponibles.begin(); it!=ciudadesDisponibles.end(); it++){
         counter++;
@@ -207,12 +227,14 @@ int despliegueDestinos(){
     cout << "Ingrese el numero de la ciudad que desea visitar: ";
     optFinal = validarRango(to_string(optFinal), 1, ciudadesDisponibles.size());
 
+    //almacena ciudad
     counter = 0;
     for(vector<string>::iterator it=ciudadesDisponibles.begin(); it!=ciudadesDisponibles.end(); it++){
         counter++;
         if(counter == optFinal) ciudad = *it;
     }
 
+    //busqueda de ciudades y su relacion
     for(int i = 1; i < 60; i++){
         if(ciudades[i].ciudad == ciudad) numDestino = i;
     }
