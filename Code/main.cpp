@@ -32,6 +32,7 @@ string continentes[5] = {
     "América", "África", "Asia", "Europa", "Oceanía" 
 };
 
+ruta rutaCliente;
 
 int main()
 {
@@ -121,7 +122,7 @@ void clientes()
 
         cout<<"Destinos posibles: "<<endl;
         
-        ruta rutaCliente = comenzarBusqueda(0, despliegueDestinos());
+        rutaCliente = comenzarBusqueda(0, despliegueDestinos());
         cout << "Primer destino: " << ciudades[rutaCliente.pares.front().destino].ciudad << endl;
         bool opt3=true;
         while(opt3) //validacion de dato
