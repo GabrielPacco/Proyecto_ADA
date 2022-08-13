@@ -230,10 +230,6 @@ int V = 0; //Numero de vertices
 list<Data>* adj; //Puntero al arreglo de la lista de adyacencia
 
 <<<<<<< HEAD
-void buscarCaminos(int, int, bool[], int[], int&, ruta*); 
-ruta comenzarBusqueda(int s, int d);
-ruta imprimirMejorRuta();
-=======
 void buscarCaminos(int, int, bool[], int[], int&, ruta*);
 ruta comenzarBusqueda(int s, int d);
 ruta imprimirMejorRuta();
