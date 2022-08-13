@@ -1,11 +1,11 @@
 #ifndef VALIDACIONES_HPP
 #define VALIDACIONES_HPP
 
+#pragma once
 #include <iostream>
 #include <string>
 #include <vector>
 #include <iterator>
-#include <clocale>
 
 using namespace std;
 
@@ -57,7 +57,7 @@ int validarNatural(string numero){ //Se toma como argumento el string del numero
         //Se advierte error
         cout << "Numero invalido" << endl << endl;
         if(atof(numero.c_str()) < 1) //si el numero ingresado es negativo, también error
-            cout << "Debe ingresar un entero mayor o igual a 1." << endl;
+        cout << "Debe ingresar un entero mayor o igual a 1." << endl;
         cout << "Por favor intente de nuevo: ";
         //Se borra la entrada anterior
         cin.clear();
@@ -75,7 +75,7 @@ int validarEntero(string numero){ //Se pone como argumento el string del numero
         //Se advierte el error
         cout << "Numero invalido" << endl << endl;
         if(atof(numero.c_str()) < 1) //si el numero ingresado es negativo, también se advierte
-            cout << "Debe ingresar solo numeros digitos." << endl;
+        cout << "Debe ingresar solo numeros digitos." << endl;
         cout << "Por favor intente de nuevo: ";
         //Se borra la entrada anterior
         cin.clear();
@@ -93,7 +93,7 @@ float validarFloat(string numero){ //Se pone como argumento el string del numero
         //Se advierte el error
         cout << "Numero natural invalido" << endl << endl;
         if(atof(numero.c_str()) < 1) //si el numero ingresado es negativo, también se advierte
-            cout << "Debe ingresar un numero positivo." << endl;
+        cout << "Debe ingresar un numero positivo." << endl;
         cout << "Por favor intente de nuevo: ";
         //Se borra la entrada anterior
         cin.clear();
@@ -110,7 +110,7 @@ int validarRango(string numero, int min, int max){ //Se pone como argumento el s
         //Se advierte el error
         cout << "Numero invalido" << endl << endl;
         if(atof(numero.c_str()) < 1 || atof(numero.c_str()) > max) //si el numero ingresado es negativo, también se advierte
-            cout << "Debe ingresar un entero entre " << min << " y " << max << endl;
+        cout << "Debe ingresar un entero entre " << min << " y " << max << endl;
         cout << "Por favor intente de nuevo: ";
         //Se borra la entrada anterior
         cin.clear();

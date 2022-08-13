@@ -5,6 +5,7 @@
 #include <list>
 #include <queue>
 #include <string>
+
 using namespace std;
 
 struct Nodo{
@@ -30,8 +31,9 @@ struct ruta{
     float peso{};
 };
 
-struct Data
-{
+queue<ruta> rutas;
+
+struct Data{
     int fin;
     int peso;
 };
@@ -59,7 +61,7 @@ destino ciudades[60] = {
         {"Argel",               "Argelia",                "Africa"},
         {"Doha",                "Catar",                  "Asia"},
         {"Paris",               "Francia",                "Europa"},
-        {"Ciudad de Panam\u00e1","Panam\u00e1",          "America"},
+        {"Ciudad de Panama",    "Panama",                 "America"},
         {"Buenos Aires",        "Argentina",              "America"},
         {"Nadi",                "Fiyi",                   "Oceania"},
         {"Melbourne",           "Australia",              "Oceania"},
@@ -68,8 +70,8 @@ destino ciudades[60] = {
         {"George Town",         "Bahamas",                "America"},
         {"Puerto Espana",       "Trinidad y Tobago",      "America"},
         {"Bridgetown",          "Barbados",               "America"},
-        {"Belmop\u00e1n",       "Belice",                 "America"},
-        {"Bogot\u00e1",         "Colombia",               "America"},
+        {"Belmopan",            "Belice",                 "America"},
+        {"Bogota",              "Colombia",               "America"},
         {"La Paz",              "Bolivia",                "America"},
         {"Belo Horizonte",      "Brasil",                 "America"},
         {"Toronto",             "Canada",                 "America"},
@@ -225,38 +227,32 @@ Nodo node[114] = {
 
 };
 
-int couter = 0;
+int counter = 0;
 int V = 0; //Numero de vertices
 list<Data>* adj; //Puntero al arreglo de la lista de adyacencia
 
-<<<<<<< HEAD
+//prototipos
+void agregarBorde(Nodo n[], int v);
+void imprimirTodosLosCaminos(int s, int d);
 void buscarCaminos(int, int, bool[], int[], int&, ruta*);
 ruta comenzarBusqueda(int s, int d);
 ruta imprimirMejorRuta();
 float costoTotalFinal = 0;
 
->>>>>>> 535c8a360b3fe641ed485262f39635ae6fae55eb
-
 ruta comenzarBusqueda(int s, int d){
     
     costoTotalFinal = 0;
-    V = 4;
+    ruta RutaFinal;
     V = 60;
     adj = new list<Data>[V];
 
-    Nodo node[6] = {{0, 1, 4}, {0, 2, 1}, {0, 3, 2}, {2, 0, 5}, {2, 1, 6}, {1, 3, 1}}; 
-
-    agregarBorde(node, 6); 
-
     agregarBorde(node, 114); 
 
-    cout << "Los siguientes son todos caminos diferentes de " << s << " a " << d << endl;
-    cout << "La siguiente es la mejor ruta desde " << ciudades[s].ciudad << " a " << ciudades[d].ciudad << endl << endl;
+    cout << "La siguiente es la mejor ruta desde " << ciudades[s].ciudad << " hacia " << ciudades[d].ciudad << endl << endl;
     imprimirTodosLosCaminos(s, d);
     RutaFinal = imprimirMejorRuta();
     viajeCompleto.ida = RutaFinal;    
     
-    imprimirTodosLosCaminos(s, d);
     cout << "La siguiente es la mejor ruta de regreso desde " << ciudades[d].ciudad << " a " << ciudades[s].ciudad << endl << endl;
     imprimirTodosLosCaminos(d, s);
 
@@ -264,6 +260,18 @@ ruta comenzarBusqueda(int s, int d){
     costoTotalFinal = 2.73 * (viajeCompleto.ida.peso + viajeCompleto.vuelta.peso);
     return RutaFinal;
    }
+
+//Conecta los diferentes vertices del grafo
+void agregarBorde(Nodo n[], int v)
+{
+    Data data;
+    for (int i = 0; i < v; i++)
+    {
+        data.fin = n[i].fin;
+        data.peso = n[i].peso;
+        adj[n[i].inicio].push_back(data);
+    }
+}
 
 ruta imprimirMejorRuta(){
     ruta unaRuta;
@@ -283,17 +291,42 @@ ruta imprimirMejorRuta(){
         if(temp.front().peso == menor){
             while(!temp.front().pares.empty()){
                 cout  << "[$" << (temp.front().pares.front().peso) * 2.73 << "]  "
-                      << ciudades[temp.front().pares.front().origen]->ciudad << " (" << ciudades[temp.front().pares.front().origen]->pais << ") -> "
-                      << ciudades[temp.front().pares.front().destino]->ciudad << " (" << ciudades[temp.front().pares.front().destino]->pais << ") "
+                      << ciudades[temp.front().pares.front().origen].ciudad << " (" << ciudades[temp.front().pares.front().origen].pais << ") -> "
+                      << ciudades[temp.front().pares.front().destino].ciudad << " (" << ciudades[temp.front().pares.front().destino].pais << ") "
                       <<  endl;
                 temp.front().pares.pop();
             }
-            cout << endl << "Costo total del viaje: $" << (temp.front().peso)*2.73 << endl << endl;
+            cout << endl << "Costo total del viaje: $" << (temp.front().peso)*2.73 <<endl<<endl;
         }
         temp.pop();
     }
     return unaRuta;
 }
+
+//Imprime todos los caminos de 's' a 'd'
+void imprimirTodosLosCaminos(int s, int d)
+{
+    //Marcar todos los vertices como no visitados
+    bool* visited = new bool[V];
+
+    //Crear arreglo para guardar los caminos
+    int* path = new int[V];
+
+    //Inicializa path[] como vacio
+    int path_index = 0;
+
+    //Inicializa todos los vertices como no visitados
+    for (int i = 0; i < V; i++)
+    {
+        visited[i] = false;
+    }
+    
+    //Llama la funcion revursiva auxiliar para imprimir todos las rutas
+    ruta unaRuta;
+    buscarCaminos(s, d, visited, path, path_index, &unaRuta);
+}
+
+
 void buscarCaminos(int u, int d, bool visited[], int path[], int& path_index, ruta* r)
 {
     //Marca el actual nodo y lo almacena en path[]
@@ -315,7 +348,6 @@ void buscarCaminos(int u, int d, bool visited[], int path[], int& path_index, ru
                         }
 
                     }
-
                     par unPar;
                     unPar.origen = path[i];
                     unPar.destino = path[i+1];
@@ -325,7 +357,7 @@ void buscarCaminos(int u, int d, bool visited[], int path[], int& path_index, ru
             }
 
 
-         r->peso = counter;
+        r->peso = counter;
         counter = 0;
         rutas.push(*r);
         while(!r->pares.empty()){
