@@ -39,7 +39,7 @@ int main()
     comenzarBusqueda(0,10);
     
     bool stop=true;
-    int opt;
+    int opt = 0;
     cout<<"Bienvenido"<<endl;
 
     do
@@ -50,8 +50,7 @@ int main()
         cout<<"               3. Iniciar abordaje."<<endl;
         cout<<"               4. Salir. "<<endl;
         cout<<"Opcion: ";
-        cin>>opt;
-        verNums(opt);
+        opt = validarRango(to_string(opt), 1, 4);
         cout<<"===================================================="<<endl;
 
         switch (opt)
@@ -161,7 +160,7 @@ int despliegueDestinos(){
     for(int i = 0; i < 5; i++) cout << i+1 << "] " << continentes[i] << endl;
 
     cout << endl << "Ingrese el numero del continente al que desea visitar: ";
-    cin >> opt;
+    opt = validarRango(to_string(opt), 1, 5);
     string continente = continentes[opt-1];
     cout << endl << "Países disponibles en " << continente << ": " << endl << endl;
 
@@ -177,8 +176,8 @@ int despliegueDestinos(){
         cout << counter << "] " << *it << endl;
     }
     cout << endl;
-        cout << "Ingrese el numero del país al que desea visitar: ";
-        cin >> optPais;
+    cout << "Ingrese el numero del país al que desea visitar: ";
+    optPais = validarRango(to_string(optPais), 1, paises.size());
     cout << endl;
 
     counter = 0;
@@ -205,7 +204,7 @@ int despliegueDestinos(){
     cout << endl;
     cout << "Ciudades disponibles en " << pais << ": " << endl;
     cout << "Ingrese el numero de la ciudad que desea visitar: ";
-    cin >> optFinal;
+    optFinal = validarRango(to_string(optFinal), 1, ciudadesDisponibles.size());
 
     counter = 0;
     for(vector<string>::iterator it=ciudadesDisponibles.begin(); it!=ciudadesDisponibles.end(); it++){
