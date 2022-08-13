@@ -3,6 +3,7 @@
 #include <set>
 #include <string>
 #include <algorithm>
+#include <clocale>
 #include "dstns.hpp"
 #include "validaciones.hpp"
 #include "logo.hpp"
@@ -29,7 +30,7 @@ vector <cliente> listaPasajeros;
 vector<cliente> pasajerosDiscapacitados;
 
 string continentes[5] = {
-    "América", "África", "Asia", "Europa", "Oceanía" 
+    "America", "Africa", "Asia", "Europa", "Oceania" 
 };
 
 ruta rutaCliente;
@@ -100,7 +101,7 @@ void clientes()
         getline(cin, unPasajero.nombre);
         cout<<"Ingrese la edad del pasajero "<<cont+1<<": "<<endl;
         cin>>unPasajero.edad;
-        cout<<"Tiene alguna discapacidad? ";
+        cout<<"¿Tiene alguna discapacidad? ";
         bool opt2=true;
 
         while(opt2) //validacion de dato
@@ -162,7 +163,7 @@ int despliegueDestinos(){
     cout << endl << "Ingrese el numero del continente al que desea visitar: ";
     opt = validarRango(to_string(opt), 1, 5);
     string continente = continentes[opt-1];
-    cout << endl << "Países disponibles en " << continente << ": " << endl << endl;
+    cout << endl << "Paises disponibles en " << continente << ": " << endl << endl;
 
     for(int i = 1; i < 60; i++){
         if(ciudades[i].continente == continente)paises.push_back(ciudades[i].pais);
@@ -176,7 +177,7 @@ int despliegueDestinos(){
         cout << counter << "] " << *it << endl;
     }
     cout << endl;
-    cout << "Ingrese el numero del país al que desea visitar: ";
+    cout << "Ingrese el numero del pais al que desea visitar: ";
     optPais = validarRango(to_string(optPais), 1, paises.size());
     cout << endl;
 
