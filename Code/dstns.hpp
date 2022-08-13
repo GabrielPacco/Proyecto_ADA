@@ -237,12 +237,12 @@ int comenzarBusqueda(int s, int d){
     agregarBorde(node, 114); 
 
     cout << "Los siguientes son todos caminos diferentes de " << s << " a " << d << endl;
-    cout << "La siguiente es la mejor ruta desde " << ciudades[s]->ciudad << " a " << ciudades[d]->ciudad << endl << endl;
+    cout << "La siguiente es la mejor ruta desde " << ciudades[s].ciudad << " a " << ciudades[d].ciudad << endl << endl;
      imprimirTodosLosCaminos(s, d);
      imprimirMejorRuta();
 
     imprimirTodosLosCaminos(s, d);
-    cout << "La siguiente es la mejor ruta de regreso desde " << ciudades[d]->ciudad << " a " << ciudades[s]->ciudad << endl << endl;
+    cout << "La siguiente es la mejor ruta de regreso desde " << ciudades[d].ciudad << " a " << ciudades[s].ciudad << endl << endl;
     imprimirTodosLosCaminos(d, s);
 
     return 0;
