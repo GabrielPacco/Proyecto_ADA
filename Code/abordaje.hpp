@@ -6,6 +6,7 @@
 #include <string>
 #include "dstns.hpp"
 #include "validaciones.hpp"
+#include <clocale>
 
 using namespace std;
 
