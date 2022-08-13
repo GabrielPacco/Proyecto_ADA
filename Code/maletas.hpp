@@ -12,7 +12,7 @@ int MenuMaletas();
 void mostraPila(stack<maleta>);
 void agregaMaletas();
 int opcion;
-stack<maleta> maletaPila;
+stack <maleta> maletaPila;
 
 int MenuMaletas()
 {

@@ -36,6 +36,13 @@ struct Data
     int peso;
 };
 
+struct idaYVuelta{
+    ruta ida;
+    ruta vuelta;
+};
+idaYVuelta viajeCompleto;
+
+
 destino ciudades[60] = {
         {"San Salvador",        "El Salvador",            "América"},
         {"Los Angeles",         "Estados Unidos",         "América"},
@@ -222,12 +229,21 @@ int couter = 0;
 int V = 0; //Numero de vertices
 list<Data>* adj; //Puntero al arreglo de la lista de adyacencia
 
+<<<<<<< HEAD
 void buscarCaminos(int, int, bool[], int[], int&, ruta*); 
 ruta comenzarBusqueda(int s, int d);
 ruta imprimirMejorRuta();
+=======
+void buscarCaminos(int, int, bool[], int[], int&, ruta*);
+ruta comenzarBusqueda(int s, int d);
+ruta imprimirMejorRuta();
+float costoTotalFinal = 0;
+
+>>>>>>> 535c8a360b3fe641ed485262f39635ae6fae55eb
 
 ruta comenzarBusqueda(int s, int d){
     
+    costoTotalFinal = 0;
     V = 4;
     V = 60;
     adj = new list<Data>[V];
@@ -242,14 +258,15 @@ ruta comenzarBusqueda(int s, int d){
     cout << "La siguiente es la mejor ruta desde " << ciudades[s].ciudad << " a " << ciudades[d].ciudad << endl << endl;
     imprimirTodosLosCaminos(s, d);
     RutaFinal = imprimirMejorRuta();
-
+    viajeCompleto.ida = RutaFinal;    
+    
     imprimirTodosLosCaminos(s, d);
     cout << "La siguiente es la mejor ruta de regreso desde " << ciudades[d].ciudad << " a " << ciudades[s].ciudad << endl << endl;
     imprimirTodosLosCaminos(d, s);
 
+    viajeCompleto.vuelta = imprimirMejorRuta();
+    costoTotalFinal = 2.73 * (viajeCompleto.ida.peso + viajeCompleto.vuelta.peso);
     return RutaFinal;
-}
-    imprimirMejorRuta();
    }
 
 ruta imprimirMejorRuta(){
@@ -269,13 +286,13 @@ ruta imprimirMejorRuta(){
     while(!temp.empty()){
         if(temp.front().peso == menor){
             while(!temp.front().pares.empty()){
-                cout  << "[" << temp.front().pares.front().peso << "]  "
+                cout  << "[$" << (temp.front().pares.front().peso) * 2.73 << "]  "
                       << ciudades[temp.front().pares.front().origen]->ciudad << " (" << ciudades[temp.front().pares.front().origen]->pais << ") -> "
                       << ciudades[temp.front().pares.front().destino]->ciudad << " (" << ciudades[temp.front().pares.front().destino]->pais << ") "
                       <<  endl;
                 temp.front().pares.pop();
             }
-            cout << "Peso total del viaje: " << temp.front().peso << endl << endl;
+            cout << endl << "Costo total del viaje: $" << (temp.front().peso)*2.73 << endl << endl;
         }
         temp.pop();
     }
