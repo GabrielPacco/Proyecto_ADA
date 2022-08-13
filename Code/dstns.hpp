@@ -223,9 +223,9 @@ int V = 0; //Numero de vertices
 list<Data>* adj; //Puntero al arreglo de la lista de adyacencia
 
 void buscarCaminos(int, int, bool[], int[], int&, ruta*); 
-void imprimirMejorRuta();
-
-int comenzarBusqueda(int s, int d){
+ruta imprimirMejorRuta();
+ruta comenzarBusqueda(int s, int d){
+    
     V = 4;
     V = 60;
     adj = new list<Data>[V];
@@ -238,19 +238,21 @@ int comenzarBusqueda(int s, int d){
 
     cout << "Los siguientes son todos caminos diferentes de " << s << " a " << d << endl;
     cout << "La siguiente es la mejor ruta desde " << ciudades[s].ciudad << " a " << ciudades[d].ciudad << endl << endl;
-     imprimirTodosLosCaminos(s, d);
-     imprimirMejorRuta();
+    imprimirTodosLosCaminos(s, d);
+    RutaFinal = imprimirMejorRuta();
 
     imprimirTodosLosCaminos(s, d);
     cout << "La siguiente es la mejor ruta de regreso desde " << ciudades[d].ciudad << " a " << ciudades[s].ciudad << endl << endl;
     imprimirTodosLosCaminos(d, s);
 
-    return 0;
+    return RutaFinal;
 }
     imprimirMejorRuta();
    }
 
-void imprimirMejorRuta(){
+ruta imprimirMejorRuta(){
+    ruta unaRuta;
+    
     float menor = rutas.front().peso;
     queue<ruta> temp;
 
@@ -275,6 +277,7 @@ void imprimirMejorRuta(){
         }
         temp.pop();
     }
+    return unaRuta;
 }
 
 
