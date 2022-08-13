@@ -30,13 +30,22 @@ struct ruta{
     float peso{};
 };
 
+queue <ruta> rutas;
+
 struct Data
 {
     int fin;
     int peso;
 };
 
-destino ciudades[60][3]{
+struct idaVuelta{
+    ruta ida;
+    ruta vuelta;
+};
+
+idaVuelta viajeCompleto;
+
+destino ciudades[60] = {
         {"San Salvador", "El Salvador", "América"},
         {"Los Angeles", "Estados Unidos", "América"},
         {"Washington", "Estados Unidos", "América"},
@@ -222,35 +231,36 @@ int couter = 0;
 int V = 0; //Numero de vertices
 list<Data>* adj; //Puntero al arreglo de la lista de adyacencia
 
+void agregarBorde(Nodo n[], int v);
+void imprimirTodosLosCaminos(int v, int w);
 void buscarCaminos(int, int, bool[], int[], int&, ruta*); 
-void imprimirMejorRuta();
+ruta imprimirMejorRuta();
+ruta comenzarBusqueda(int v, int w);
+float costoTotalFinal = 0;
 
-int comenzarBusqueda(int s, int d){
-    V = 4;
+ruta comenzarBusqueda(int s, int d)
+{
+    costoTotalFinal = 0;
+    ruta RutaFinal;
     V = 60;
     adj = new list<Data>[V];
-
-    Nodo node[6] = {{0, 1, 4}, {0, 2, 1}, {0, 3, 2}, {2, 0, 5}, {2, 1, 6}, {1, 3, 1}}; 
-
-    agregarBorde(node, 6); 
-
+    
     agregarBorde(node, 114); 
 
-    cout << "Los siguientes son todos caminos diferentes de " << s << " a " << d << endl;
-    cout << "La siguiente es la mejor ruta desde " << ciudades[s]->ciudad << " a " << ciudades[d]->ciudad << endl << endl;
+    cout << endl << endl << "La siguiente es la mejor ruta desde " << ciudades[s].ciudad << " a " << ciudades[d].ciudad << endl << endl;
      imprimirTodosLosCaminos(s, d);
-     imprimirMejorRuta();
+     RutaFinal = imprimirMejorRuta();
+     viajeCompleto.ida = RutaFinal;
 
-    imprimirTodosLosCaminos(s, d);
-    cout << "La siguiente es la mejor ruta de regreso desde " << ciudades[d]->ciudad << " a " << ciudades[s]->ciudad << endl << endl;
+    cout << "La siguiente es la mejor ruta de regreso desde " << ciudades[d].ciudad << " a " << ciudades[s].ciudad << endl << endl;
     imprimirTodosLosCaminos(d, s);
 
-    return 0;
+    viajeCompleto.vuelta = imprimirMejorRuta();
+    costoTotalFinal = 2.73 * (viajeCompleto.ida.peso + viajeCompleto.vuelta.peso);
+    return RutaFinal;
 }
-    imprimirMejorRuta();
-   }
 
-void imprimirMejorRuta(){
+ruta imprimirMejorRuta(){
     float menor = rutas.front().peso;
     queue<ruta> temp;
 
