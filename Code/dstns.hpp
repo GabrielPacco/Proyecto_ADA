@@ -223,7 +223,9 @@ int V = 0; //Numero de vertices
 list<Data>* adj; //Puntero al arreglo de la lista de adyacencia
 
 void buscarCaminos(int, int, bool[], int[], int&, ruta*); 
+ruta comenzarBusqueda(int s, int d);
 ruta imprimirMejorRuta();
+
 ruta comenzarBusqueda(int s, int d){
     
     V = 4;
@@ -279,5 +281,58 @@ ruta imprimirMejorRuta(){
     }
     return unaRuta;
 }
+void buscarCaminos(int u, int d, bool visited[], int path[], int& path_index, ruta* r)
+{
+    //Marca el actual nodo y lo almacena en path[]
+    visited[u] = true;
+    path[path_index] = u;
+    path_index++;
 
+    //Si el actual vertice es el mismo que el destino, entonces imprime el path[] actual
+    if (u == d)
+    {
+        for (int i = 0; i < path_index; i++)
+        {
+            if(i+1 < path_index){
+                    int pesoTemp = 0;
+                    for(auto & n : node){
+                        if(n.inicio == path[i] && n.fin == path[i+1]){
+                            pesoTemp = n.peso;
+                            counter += pesoTemp;
+                        }
+
+                    }
+
+                    par unPar;
+                    unPar.origen = path[i];
+                    unPar.destino = path[i+1];
+                    unPar.peso = pesoTemp;
+                    r->pares.push(unPar);
+                }
+            }
+
+
+         r->peso = counter;
+        counter = 0;
+        rutas.push(*r);
+        while(!r->pares.empty()){
+            r->pares.pop();
+        }
+    }
+    else //Si el actual vertice no es el destino
+    {
+        list<Data>::iterator i;
+        for (i = adj[u].begin(); i != adj[u].end(); ++i)
+        {
+            if (!visited[i->fin])
+            {
+                buscarCaminos(i->fin, d, visited, path, path_index, r);
+            }
+        }
+    }
+
+    //Remover el actual vertice de path[] y marcarlo como visitado
+    path_index--;
+    visited[u] = false;
+}
 
