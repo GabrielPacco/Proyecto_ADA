@@ -12,6 +12,7 @@ struct Cliente{
     int edad;
     char discapacidad;
     string destino;
+    float costoTotal;
 
 };
 typedef struct Cliente cliente;
