@@ -120,7 +120,9 @@ void clientes()
         }
 
         cout<<"Destinos posibles: "<<endl;
-        despliegueDestinos();
+        
+        ruta rutaCliente = comenzarBusqueda(0, despliegueDestinos());
+        cout << "Primer destino: " << ciudades[rutaCliente.pares.front().destino].ciudad << endl;
         bool opt3=true;
         while(opt3) //validacion de dato
         {
