@@ -37,7 +37,7 @@ ruta rutaCliente;
 int main()
 {
     comenzarBusqueda(0,10);
-    
+    mostrarLogo();
     bool stop=true;
     int opt = 0;
     cout<<"Bienvenido"<<endl;
