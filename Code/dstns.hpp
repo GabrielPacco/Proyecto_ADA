@@ -222,6 +222,34 @@ int couter = 0;
 int V = 0; //Numero de vertices
 list<Data>* adj; //Puntero al arreglo de la lista de adyacencia
 
+void buscarCaminos(int, int, bool[], int[], int&, ruta*); 
+void imprimirMejorRuta();
+
+int comenzarBusqueda(int s, int d){
+    V = 4;
+    V = 60;
+    adj = new list<Data>[V];
+
+    Nodo node[6] = {{0, 1, 4}, {0, 2, 1}, {0, 3, 2}, {2, 0, 5}, {2, 1, 6}, {1, 3, 1}}; 
+
+    agregarBorde(node, 6); 
+
+    agregarBorde(node, 114); 
+
+    cout << "Los siguientes son todos caminos diferentes de " << s << " a " << d << endl;
+    cout << "La siguiente es la mejor ruta desde " << ciudades[s]->ciudad << " a " << ciudades[d]->ciudad << endl << endl;
+     imprimirTodosLosCaminos(s, d);
+     imprimirMejorRuta();
+
+    imprimirTodosLosCaminos(s, d);
+    cout << "La siguiente es la mejor ruta de regreso desde " << ciudades[d]->ciudad << " a " << ciudades[s]->ciudad << endl << endl;
+    imprimirTodosLosCaminos(d, s);
+
+    return 0;
+}
+    imprimirMejorRuta();
+   }
+
 void imprimirMejorRuta(){
     float menor = rutas.front().peso;
     queue<ruta> temp;
