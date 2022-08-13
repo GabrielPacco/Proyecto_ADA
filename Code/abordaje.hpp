@@ -13,8 +13,14 @@ struct cliente{
     string nombre;
     int edad;
     char discapacidad;
+<<<<<<< HEAD
     ruta rutaVuelo;
     float costoTotal;
+=======
+    string destino;
+    float costoTotal;
+
+>>>>>>> 97b1c503008b80115e376dc6952c4a3c3ae5b2d9
 };
 
 struct cliente
@@ -156,6 +162,7 @@ void Abordaje_destino(destino v, vector <cliente> pasajeros , vector <cliente> p
         cout<<"\nEl destino "<<d<<" ha sido elegido satisfactoriamente\n\n";
     }
 }
+<<<<<<< HEAD
 */
 
 //Funciones ejecutadas directamente por el menu 
@@ -224,3 +231,5 @@ void Abordar_pasajeros(puerta unap, vector <cliente> pasajeros , vector <cliente
         }
     }
 }
+=======
+>>>>>>> 97b1c503008b80115e376dc6952c4a3c3ae5b2d9
