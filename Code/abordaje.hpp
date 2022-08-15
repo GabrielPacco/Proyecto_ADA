@@ -16,9 +16,7 @@ struct cliente{
     float costoTotal;
 };
 
-
-//Codigo Gil *aprovado*
- struct puerta{
+struct puerta{
     string destino;
 };
 

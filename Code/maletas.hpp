@@ -67,7 +67,7 @@ void agregaMaletas ()
           float pes;
         do{
           cout<<endl;
-          cout<<"Ingrese el peso de la maleta #"<<(i+1) <<" en libras : ";
+          cout<<"Ingrese el peso de la maleta #"<<(i+1) <<" en kilogramos : ";
           cin>>pes;
 
           if(pes < 0.1){
@@ -97,7 +97,7 @@ void mostraPila(stack<maleta> Pila){
            cout << "Cliente #"<< (i+1)<< ":\n Cantidad de maletas: " << (Pila2.top()).cantidad << endl;
            for (size_t i = 0; i < (Pila2.top()).cantidad; i++)
            {
-               cout << "       Maleta #" << (i+1) << ": " << (Pila2.top()).peso[i] <<" libras"<< "\n";
+               cout << "       Maleta #" << (i+1) << ": " << (Pila2.top()).peso[i] <<" kilogramos"<< "\n";
            }
            cout << "\n";
            Pila2.pop();

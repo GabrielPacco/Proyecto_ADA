@@ -46,15 +46,15 @@ void mostrarMenu(const vector<Opcion>& menu){
     }
 }
 
-//Función que verifica si el entero introducido es válido
-int validarNatural(string numero){ //Se toma como argumento el string del numero
-    /*Mientras se introduzca un número
+//Funcion para verificar que el entero introducido sea valido
+int validarNatural(string numero){ //Se pone como argumento el string del numero
+    /*Mientras se introduzca un numero
         y alguno de sus caracteres no coincida con los permitidos:  */
     while(cin >> numero && numero.find_first_not_of("1234567890") != string::npos || atof(numero.c_str()) < 1){
-        //Se advierte error
+        //Se advierte el error
         cout << "Numero invalido" << endl << endl;
-        if(atof(numero.c_str()) < 1) //si el numero ingresado es negativo, también error
-        cout << "Debe ingresar un entero mayor o igual a 1." << endl;
+        if(atof(numero.c_str()) < 1) //si el numero ingresado es negativo, tambien se advierte
+            cout << "Debe ingresar un entero mayor o igual a 1." << endl;
         cout << "Por favor intente de nuevo: ";
         //Se borra la entrada anterior
         cin.clear();
@@ -116,7 +116,6 @@ int validarRango(string numero, int min, int max){ //Se pone como argumento el s
     }
     return (int) atof(numero.c_str() );
 }
-
 
 string validarString(){
     string texto;
