@@ -1,6 +1,3 @@
-#ifndef VALIDACIONES_HPP
-#define VALIDACIONES_HPP
-
 #pragma once
 #include <iostream>
 #include <string>
@@ -136,4 +133,3 @@ string validarString(){
     }
     return texto;
 }
-#endif // VALIDACIONES_HPP
