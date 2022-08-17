@@ -44,6 +44,7 @@ Por medio de la librería `<queue>` se crean colas que almacenan todas las posib
 
 ### Pre-requisitos 📋
 
+### Hardware
 Recomendado:
 ● CPU: Intel Core i3 ó AMD Athlon II (K10) 2.8 GHz
 ● RAM: 4GB
@@ -60,23 +61,33 @@ Mínimo:
 ● Extension Code Runner - VSCode
 ● C++: En su última versión
 
+### Software
+● Versión de C++: 14 en adelante
+● Tener instalado el compilador de C++ MinGW
+● Tener instalado VSCode
+
 ### Instalación 🔧
 
 1. Realiza uan clonación del repositorio en el sitio local de su preferencia con
     ```
-    git clone
+    git clone https://github.com/GabrielPacco/Proyecto_ADA
     ```
 2. Abre el archivo desde la terminal de comandos con Visual Studio Code
      ```
-    code Proyecto_ADA
+    cd Proyecto_ADA
     ```
-3. Realiza la instalación de la extensión Code Runner.
-4. Ubica el archivo "main.cpp".
-5. Realiza la ejecución del proyecto con
+3. Ingresar a la ubicación del código.
     ```
-    ctrol + shift + b
+    cd Code
     ```
-
+4. Ingresar el siguiente comando para compilar:
+    ```
+    g++ -o main.exe main.cpp
+    ```
+5. Ejecutar el archivo .exe:
+    ```
+    main.exe
+    ```
 ## Ejecutando las pruebas ⚙️
 
 1. Abrir la carpeta en la que se encuentra el código del programa en Visual Studio Code.
