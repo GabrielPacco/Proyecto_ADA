@@ -5,6 +5,10 @@
 
 ## Descripción del Proyecto
 
+### Enlace al video de la exposición:
+    
+[![Alt text](https://img.youtube.com/vi/QQqT5w-uCPk/0.jpg)](https://youtu.be/QQqT5w-uCPk)
+
 ### UNSA TRAVEL
 
 Se ha creado un sistema de boletería simplificado para una aerolínea llamada UNSA TRAVEL que ayudara a los estudiantes universitarios de nuestra universidad a movilizarse e impulsar sus viajes durante su proceso academico el cual tiene nexos con 60 ciudades alrededor del mundo, las cuales se pueden visualizar en este mapa: 
